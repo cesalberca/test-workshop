@@ -23,6 +23,7 @@ describe("AvatarBlobResponse", () => {
   });
 
   it("should get the user email", async () => {
+    expect.assertions(1);
     const hash = "123";
 
     await avatarRepository.getUserByEmailHash(hash);
@@ -33,6 +34,7 @@ describe("AvatarBlobResponse", () => {
   });
 
   it("should format the response into user", async () => {
+    expect.assertions(1);
     const hash = "123";
     createObjectUrlMock.mockImplementation(() => "foo");
 

@@ -35,6 +35,7 @@ describe("UserViewerContainer", () => {
   });
 
   it("should call repository when email changes", async () => {
+    expect.assertions(1)
     const userFormComponent = wrapper.find({ name: "UserFormContainer" });
 
     userFormComponent.vm.$emit("on-valid-email-change", "foo@foo.com");
@@ -44,6 +45,7 @@ describe("UserViewerContainer", () => {
   });
 
   it("should debounce call when email changes", async () => {
+    expect.assertions(1)
     const userFormComponent = wrapper.find({ name: "UserFormContainer" });
 
     userFormComponent.vm.$emit("on-valid-email-change", "foo@foo.com");
@@ -53,6 +55,7 @@ describe("UserViewerContainer", () => {
   });
 
   it("should set user to child component", async () => {
+    expect.assertions(1)
     const userFormComponent = wrapper.find({ name: "UserFormContainer" });
     const avatarComponent = wrapper.find({ name: "UserAvatarComponent" });
 
