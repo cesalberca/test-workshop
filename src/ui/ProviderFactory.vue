@@ -2,21 +2,25 @@
   <div><slot /></div>
 </template>
 <script lang="ts">
-import { Component, Vue, Provide } from "vue-property-decorator";
-import { AvatarRepositoryFactory } from "../domains/avatar/repositories/GravatarRepositoryFactory";
-import { AvatarRepository } from "../domains/avatar/repositories/GravatarRepository";
-import { debounce } from "../utils/debounce";
-import { hasher } from "../utils/hasher";
+import { Component, Provide, Vue } from "vue-property-decorator";
+import { Hasher } from "../utils/Hasher";
+import { AvatarRepositoryFactory } from "../domains/avatar/repositories/AvatarRepositoryFactory";
+import { AvatarRepository } from "../domains/avatar/repositories/AvatarRepository";
+import { UserValidationService } from "../domains/users/UserValidationService";
+import { Debouncer } from "../utils/Debouncer";
 
 @Component
 export default class ProviderFactory extends Vue {
   @Provide()
-  gravatarRepository: AvatarRepository = AvatarRepositoryFactory.createAvatarPhotoRepository();
+  avatarRepository: AvatarRepository = AvatarRepositoryFactory.createAvatarPhotoRepository();
 
   @Provide()
-  debounce: typeof debounce = debounce;
+  debouncer = new Debouncer();
 
   @Provide()
-  hasher: typeof hasher = hasher;
+  hasher = new Hasher();
+
+  @Provide()
+  userValidationService = new UserValidationService();
 }
 </script>

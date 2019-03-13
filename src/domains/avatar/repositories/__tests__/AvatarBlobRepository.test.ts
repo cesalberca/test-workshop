@@ -5,7 +5,7 @@ import { AvatarBlobRepository } from "../AvatarBlobRepository";
 describe("AvatarBlobResponse", () => {
   let fetcherMock: any;
   let createObjectUrlMock: any;
-  let gravatarRepository: AvatarRepository;
+  let avatarRepository: AvatarRepository;
 
   beforeEach(() => {
     createObjectUrlMock = jest.fn();
@@ -19,13 +19,13 @@ describe("AvatarBlobResponse", () => {
         blob: () => Promise.resolve("foo")
       })
     );
-    gravatarRepository = new AvatarBlobRepository(fetcherMock);
+    avatarRepository = new AvatarBlobRepository(fetcherMock);
   });
 
   it("should get the user email", async () => {
     const hash = "123";
 
-    await gravatarRepository.getUserByEmailHash(hash);
+    await avatarRepository.getUserByEmailHash(hash);
 
     expect(fetcherMock).toHaveBeenCalledWith(
       "https://cors-anywhere.herokuapp.com/http://cdn.libravatar.org/avatar/123"
@@ -36,8 +36,8 @@ describe("AvatarBlobResponse", () => {
     const hash = "123";
     createObjectUrlMock.mockImplementation(() => "foo");
 
-    const result = await gravatarRepository.getUserByEmailHash(hash);
+    const result = await avatarRepository.getUserByEmailHash(hash);
 
-    expect(result).toEqual(new User("foo"));
+    expect(result).toEqual(new User("", "foo"));
   });
 });

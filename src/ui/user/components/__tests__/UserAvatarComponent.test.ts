@@ -17,13 +17,13 @@ describe("UserAvatarComponent", () => {
   });
 
   it("should show if the user exists", () => {
-    wrapper.setProps({ user: new User("foo") });
+    wrapper.setProps({ user: new User("", "foo") });
 
     expect(wrapper.html()).toBeDefined();
   });
 
   it("should set the image url with the user's photo", () => {
-    wrapper.setProps({ user: new User("foo") });
+    wrapper.setProps({ user: new User("", "foo") });
 
     const image = wrapper.find("img");
     expect(image.attributes("src")).toEqual("foo");

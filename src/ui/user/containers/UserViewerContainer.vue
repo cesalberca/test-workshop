@@ -1,41 +1,41 @@
 <template>
   <section class="viewer">
-    <UserFormComponent @on-email-change="updateEmail" />
+    <UserFormContainer @on-valid-email-change="updateEmail" />
     <UserAvatarComponent :user="user" />
   </section>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Inject } from "vue-property-decorator";
-import { AvatarRepository } from "../../../domains/avatar/repositories/GravatarRepository";
-import UserFormComponent from "../components/UserFormComponent.vue";
-import UserAvatarComponent from "../components/UserAvatarComponent.vue";
+import { Component, Inject, Vue, Watch } from "vue-property-decorator";
 import { User } from "../../../domains/users/User";
-import { debounce } from "../../../utils/debounce";
-import { hasher } from "../../../utils/hasher";
+import { AvatarRepository } from "../../../domains/avatar/repositories/AvatarRepository";
+import { UserAvatarComponent } from "../components";
+import { Debouncer } from "../../../utils/Debouncer";
+import { Hasher } from "../../../utils/Hasher";
+import UserFormContainer from "./UserFormContainer.vue";
 
 @Component({
   components: {
     UserAvatarComponent,
-    UserFormComponent
+    UserFormContainer
   }
 })
-export default class AvatarViewerContainer extends Vue {
+export default class UserViewerContainer extends Vue {
   email: string = "";
   user: User = User.empty();
 
   @Inject()
-  gravatarRepository!: AvatarRepository;
+  avatarRepository!: AvatarRepository;
 
   @Inject()
-  debounce!: typeof debounce;
+  debouncer!: Debouncer;
 
   @Inject()
-  hasher!: typeof hasher;
+  hasher!: Hasher;
 
   debouncedQueryEmail!: () => void;
 
   created() {
-    this.debouncedQueryEmail = this.debounce(this.queryEmail, 1000);
+    this.debouncedQueryEmail = this.debouncer.debounce(this.queryEmail, 1000);
   }
 
   @Watch("email")
@@ -48,8 +48,8 @@ export default class AvatarViewerContainer extends Vue {
   }
 
   async queryEmail() {
-    const hash = this.hasher(this.email);
-    const user = await this.gravatarRepository.getUserByEmailHash(hash);
+    const hash = this.hasher.hash(this.email);
+    const user = await this.avatarRepository.getUserByEmailHash(hash);
     this.user = user;
   }
 }

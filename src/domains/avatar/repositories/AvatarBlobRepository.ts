@@ -3,7 +3,7 @@ import { Fetcher } from "../../Fetcher";
 import { AvatarRepository } from "./AvatarRepository";
 
 export class AvatarBlobRepository implements AvatarRepository {
-  private url: string;
+  private readonly url: string;
 
   public constructor(private readonly fetcher: Fetcher) {
     this.url =
@@ -14,6 +14,6 @@ export class AvatarBlobRepository implements AvatarRepository {
     const response = await this.fetcher(`${this.url}/${hash}`);
     const result = await response.blob();
     const object = URL.createObjectURL(result);
-    return new User(object);
+    return new User("", object);
   }
 }

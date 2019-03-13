@@ -12,7 +12,15 @@ describe("UserFormComponent", () => {
   it("should emit event", () => {
     const input = wrapper.find("input");
     (input.element as HTMLInputElement).value = "foo";
+
     input.trigger("input");
+
     expect(wrapper.emitted("on-email-change")[0][0]).toEqual("foo");
+  });
+
+  it("should apply has-error class when it has error", () => {
+    wrapper.setProps({ hasError: true })
+
+    expect(wrapper.find('input').classes()).toContain('has-error')
   });
 });

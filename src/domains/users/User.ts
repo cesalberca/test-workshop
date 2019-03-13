@@ -1,11 +1,14 @@
 export class User {
-  constructor(private readonly photo: string) {}
+  public constructor(
+    public readonly email: string,
+    private readonly photo: string
+  ) {}
 
-  static empty() {
-    return new User("");
+  public static empty(): User {
+    return new User("", "");
   }
 
-  exists(): boolean {
+  public exists(): boolean {
     return this.photo.length !== 0;
   }
 }
