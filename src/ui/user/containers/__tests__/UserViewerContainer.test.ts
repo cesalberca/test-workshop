@@ -2,12 +2,12 @@ import Vue from "vue";
 import { shallowMount, Wrapper } from "@vue/test-utils";
 import { User } from "../../../../domains/users/User";
 import { flushPromises } from "../../../../utils/flushPromises";
-import { GravatarRepository } from "../../../../domains/gravatar/repositories/GravatarRepository";
 import { UserViewerContainer } from "../index";
+import { AvatarRepository } from "../../../../domains/avatar/repositories/AvatarRepository";
 
 describe("UserViewerContainer", () => {
   let wrapper: Wrapper<Vue>;
-  let gravatarRepositoryMock: GravatarRepository;
+  let gravatarRepositoryMock: AvatarRepository;
   let debounceMock: jest.Mock;
   let hasherMock: jest.Mock;
 

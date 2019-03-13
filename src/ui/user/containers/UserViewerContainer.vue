@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Watch, Inject } from "vue-property-decorator";
-import { GravatarRepository } from "../../../domains/gravatar/repositories/GravatarRepository";
+import { AvatarRepository } from "../../../domains/avatar/repositories/GravatarRepository";
 import UserFormComponent from "../components/UserFormComponent.vue";
 import UserAvatarComponent from "../components/UserAvatarComponent.vue";
 import { User } from "../../../domains/users/User";
@@ -24,7 +24,7 @@ export default class AvatarViewerContainer extends Vue {
   user: User = User.empty();
 
   @Inject()
-  gravatarRepository!: GravatarRepository;
+  gravatarRepository!: AvatarRepository;
 
   @Inject()
   debounce!: typeof debounce;

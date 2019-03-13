@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>Gravatar Viewer</h1>
+    <h1>Avatar Viewer</h1>
     <label>Email</label>
     <input name="email" type="email" @input="onEmailChange" class="email" />
   </header>

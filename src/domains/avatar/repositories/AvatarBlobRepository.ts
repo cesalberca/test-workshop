@@ -1,13 +1,13 @@
-import { GravatarRepository } from "./GravatarRepository";
 import { User } from "../../users/User";
 import { Fetcher } from "../../Fetcher";
+import { AvatarRepository } from "./AvatarRepository";
 
-export class GravatarBlobRepository implements GravatarRepository {
+export class AvatarBlobRepository implements AvatarRepository {
   private url: string;
 
   public constructor(private readonly fetcher: Fetcher) {
     this.url =
-      "https://cors-anywhere.herokuapp.com/https://seccdn.libravatar.org/avatar";
+      "https://cors-anywhere.herokuapp.com/http://cdn.libravatar.org/avatar";
   }
 
   public async getUserByEmailHash(hash: string): Promise<User> {
