@@ -7,11 +7,10 @@
 <script lang="ts">
 import { Component, Inject, Vue, Watch } from "vue-property-decorator";
 import { User } from "../../../domains/users/User";
-import { AvatarRepository } from "../../../domains/avatar/repositories/AvatarRepository";
 import { UserAvatarComponent } from "../components";
-import { Debouncer } from "../../../utils/Debouncer";
-import { Hasher } from "../../../utils/Hasher";
 import UserFormContainer from "./UserFormContainer.vue";
+import { Debouncer } from "../../../utils/Debouncer";
+import { AvatarQueryEmailService } from "../../../domains/avatar/services/QueryEmailService";
 
 @Component({
   components: {
@@ -24,18 +23,18 @@ export default class UserViewerContainer extends Vue {
   user: User = User.empty();
 
   @Inject()
-  avatarRepository!: AvatarRepository;
-
-  @Inject()
   debouncer!: Debouncer;
 
   @Inject()
-  hasher!: Hasher;
+  avatarQueryEmailService!: AvatarQueryEmailService;
 
   debouncedQueryEmail!: () => void;
 
   created() {
-    this.debouncedQueryEmail = this.debouncer.debounce(this.queryEmail, 1000);
+    this.debouncedQueryEmail = this.debouncer.debounce(
+      this.avatarQueryEmailService.queryEmail,
+      1000
+    );
   }
 
   @Watch("email")
@@ -45,12 +44,6 @@ export default class UserViewerContainer extends Vue {
 
   updateEmail(email: string) {
     this.email = email;
-  }
-
-  async queryEmail() {
-    const hash = this.hasher.hash(this.email);
-    const user = await this.avatarRepository.getUserByEmailHash(hash);
-    this.user = user;
   }
 }
 </script>

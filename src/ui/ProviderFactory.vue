@@ -8,6 +8,7 @@ import { AvatarRepositoryFactory } from "../domains/avatar/repositories/AvatarRe
 import { AvatarRepository } from "../domains/avatar/repositories/AvatarRepository";
 import { UserValidationService } from "../domains/users/UserValidationService";
 import { Debouncer } from "../utils/Debouncer";
+import { AvatarQueryEmailService } from "../domains/avatar/services/AvatarQueryEmailService";
 
 @Component
 export default class ProviderFactory extends Vue {
@@ -22,5 +23,11 @@ export default class ProviderFactory extends Vue {
 
   @Provide()
   userValidationService = new UserValidationService();
+
+  @Provide()
+  queryEmailService = new AvatarQueryEmailService(
+    new Hasher(),
+    AvatarRepositoryFactory.createAvatarPhotoRepository()
+  );
 }
 </script>
