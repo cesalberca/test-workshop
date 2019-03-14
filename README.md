@@ -32,3 +32,14 @@ yarn run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Notas
+
+1. ¿Por qué hacer tests?
+0. ¿Qué es lo que tenemos que probar?
+0. Tests unitarios
+0. TDD
+0. Jest
+0. Mocks
+0. Vue
+0. Vuex

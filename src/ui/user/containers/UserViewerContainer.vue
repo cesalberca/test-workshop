@@ -10,7 +10,7 @@ import { User } from "../../../domains/users/User";
 import { UserAvatarComponent } from "../components";
 import UserFormContainer from "./UserFormContainer.vue";
 import { Debouncer } from "../../../utils/Debouncer";
-import { AvatarQueryEmailService } from "../../../domains/avatar/services/QueryEmailService";
+import { AvatarQueryEmailService } from "../../../domains/avatar/services/AvatarQueryEmailService";
 
 @Component({
   components: {

@@ -15,6 +15,6 @@ import { SpinnerComponent } from "../components";
 })
 export default class LoadingContainer extends Vue {
   @Store.GlobalModule.State
-  isLoading: GlobalModule["isLoading"];
+  isLoading!: GlobalModule["isLoading"];
 }
 </script>
