@@ -40,6 +40,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 0. Tests unitarios
 0. TDD
 0. Jest
+    0. Tests asíncronos
+    0. Flush promises
 0. Mocks
 0. Vue
+    0. vm.$nextTick
 0. Vuex
+    0. ActionContext
