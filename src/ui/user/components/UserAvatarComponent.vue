@@ -13,7 +13,7 @@ export default class UserAvatarComponent extends Vue {
   @Prop({ type: Object, default: () => User.empty() })
   user!: User;
 
-  get showUser() {
+  get showUser(): boolean {
     return this.user.exists();
   }
 }

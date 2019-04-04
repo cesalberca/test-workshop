@@ -38,12 +38,25 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 1. ¿Por qué hacer tests?
 0. ¿Qué es lo que tenemos que probar?
 0. Tests unitarios
-0. TDD
 0. Jest
-    0. Tests asíncronos
+    0. Tests asíncronas
     0. Flush promises
 0. Mocks
 0. Vue
     0. vm.$nextTick
 0. Vuex
     0. ActionContext
+0. TDD
+
+
+Cosas malas
+
+1. Amargura
+2. Hay que hacer bien el test
+3. Si el test está muy acoplado se rompe por nada
+
+Cosas buenas
+
+1. Confianza 
+2. Refactorizar
+3. Documentación ejecutable

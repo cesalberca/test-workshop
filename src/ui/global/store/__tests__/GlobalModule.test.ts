@@ -5,7 +5,7 @@ jest.mock("vuex-module-decorators");
 describe("GlobalModule", () => {
   it("should mutate state when dispatching loading action", async () => {
     expect.assertions(1);
-    const module = new GlobalModule();
+    const module = new GlobalModule({});
 
     await module.hideSpinner()
 
@@ -14,7 +14,7 @@ describe("GlobalModule", () => {
 
   it("should mutate state when dispatching loaded action", async () => {
     expect.assertions(1);
-    const module = new GlobalModule();
+    const module = new GlobalModule({});
 
     await module.showSpinner()
 

@@ -53,7 +53,7 @@ describe("UserViewerContainer", () => {
     expect(debouncerMock.debounce).toHaveBeenCalled();
   });
 
-  it.skip("should set user to child component", async () => {
+  it("should set user to child component", async () => {
     expect.assertions(1);
     const userFormComponent = wrapper.find({ name: "UserFormContainer" });
     const avatarComponent = wrapper.find({ name: "UserAvatarComponent" });
@@ -61,6 +61,6 @@ describe("UserViewerContainer", () => {
     userFormComponent.vm.$emit("on-valid-email-change", "foo@foo.com");
     await flushPromises();
 
-    expect(avatarComponent.props("user").photo).toBe("foo");
+    expect(avatarComponent.props("user").photo).toBe("bar");
   });
 });

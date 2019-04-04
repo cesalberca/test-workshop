@@ -31,10 +31,10 @@ export default class UserViewerContainer extends Vue {
   debouncedQueryEmail!: () => void;
 
   created() {
-    this.debouncedQueryEmail = this.debouncer.debounce(
-      this.avatarQueryEmailService.queryEmail,
-      1000
-    );
+    this.debouncedQueryEmail = this.debouncer.debounce(async () => {
+      const user = await this.avatarQueryEmailService.queryEmail(this.email);
+      this.user = user;
+    }, 1000);
   }
 
   @Watch("email")
