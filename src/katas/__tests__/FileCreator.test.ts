@@ -24,4 +24,12 @@ describe("FileCreator", () => {
 
     expect(actual).toBe("bar");
   });
+
+  it("Si un fichero ya existe y se quiere mantener ambos debe devolver el nombre con el sufijo (n), siendo n la última copia del fichero", () => {
+    const fileCreator = new FileCreator(["foo", "bar"]);
+
+    const actual = fileCreator.copy("bar");
+
+    expect(actual).toBe("bar (1)");
+  });
 });
