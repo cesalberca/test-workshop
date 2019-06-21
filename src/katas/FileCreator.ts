@@ -1,11 +1,14 @@
 export class FileCreator {
-  public constructor(files: string[]) {}
+  public constructor(private readonly files: string[]) {}
 
   public overwrite(name: string) {
-    return name
+    return name;
   }
 
   public copy(name: string) {
-    return name
+    if (this.files.includes(name)) {
+      return `${name} (1)`;
+    }
+    return name;
   }
 }
