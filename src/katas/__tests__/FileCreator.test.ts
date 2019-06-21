@@ -33,11 +33,19 @@ describe("FileCreator", () => {
     expect(actual).toBe("bar (1)");
   });
 
-  it("Si un fichero ya existe, la copia de este fichero ya existe, la copia de la copia ya existe y se quiere mantener ambos debe devolver el nombre con el sufijo (2)", () => {
+  it("Si un fichero ya existe, la copia de este fichero ya existe, la copia de la copia ya existe y se quiere mantener ambos debe devolver el nombre con el sufijo (3)", () => {
     const fileCreator = new FileCreator(["bar", "bar (1)", "bar (2)"]);
 
     const actual = fileCreator.copy("bar");
 
     expect(actual).toBe("bar (3)");
+  });
+
+  it("Si un fichero ya existe y su nombre ya incluye un sufijo se debe añadir a ese sufijo otro sufijo", () => {
+    const fileCreator = new FileCreator(["bar", "bar (1)", "bar (2)"]);
+
+    const actual = fileCreator.copy("bar (1)");
+
+    expect(actual).toBe("bar (1) (1)");
   });
 });
