@@ -3,7 +3,7 @@ import { User } from "../../users/User";
 import { AvatarRepository } from "../repositories/AvatarRepository";
 
 export class AvatarQueryEmailService {
-  constructor(
+  public constructor(
     private readonly hasher: Hasher,
     private readonly avatarRepository: AvatarRepository
   ) {}

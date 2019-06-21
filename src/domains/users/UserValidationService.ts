@@ -1,16 +1,14 @@
 import { User } from "./User";
 
 export class UserValidationService {
-  /**
-   * 1. Should check if the email has one @
-   * 2. Should check that there is at least one character before the @
-   * 3. Should have a dot after the @
-   */
   public validate(user: User) {
-    if (!user.email.includes("@")) {
-      return false;
-    }
+    const parts = user.email.split("@");
+    const hasFirstPart = parts[0] !== undefined;
+    const hasSecondPart = parts[1] !== undefined;
+    const hasAt = user.email.includes("@");
 
-    return true;
+    const validations = [hasAt, hasFirstPart, hasSecondPart];
+
+    return validations.every(validation => !validation);
   }
 }

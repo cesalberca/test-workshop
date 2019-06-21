@@ -9,11 +9,38 @@ describe("UserValidationService", () => {
   });
 
   it("should check if the email is valid", () => {
-    const email = "not valid email";
-    const user = new User(email, "");
+    const notValidEmail = "not valid email";
+    const user = new User(notValidEmail, "");
 
-    const result = userValidationService.validate(user);
+    const actual = userValidationService.validate(user);
 
-    expect(result).toBeFalsy();
+    expect(actual).toBe(false);
+  });
+
+  it("should check if the email has a domain", () => {
+    const notValidEmail = "user@";
+    const user = new User(notValidEmail, "");
+
+    const actual = userValidationService.validate(user);
+
+    expect(actual).toBe(false);
+  });
+
+  it("should check if the email has a name", () => {
+    const notValidEmail = "@domain.com";
+    const user = new User(notValidEmail, "");
+
+    const actual = userValidationService.validate(user);
+
+    expect(actual).toBe(false);
+  });
+
+  it("should check if the email is valid", () => {
+    const validEmail = "user@domain.com";
+    const user = new User(validEmail, "");
+
+    const actual = userValidationService.validate(user);
+
+    expect(actual).toBe(false);
   });
 });
