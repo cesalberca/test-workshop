@@ -3,5 +3,7 @@ export class FileCreator {
 
   public overwrite(name: string) {}
 
-  public copy(name: string) {}
+  public copy(name: string) {
+    return name
+  }
 }
