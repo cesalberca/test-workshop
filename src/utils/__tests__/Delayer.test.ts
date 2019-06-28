@@ -26,10 +26,15 @@ describe("Delayer", () => {
     const mock = jest.fn();
     const windowMock: Partial<Window> = {
       clearTimeout: jest.fn()
-    }
-    const delayer = new Delayer(window.setTimeout, mock, 1, windowMock as Window);
-    delayer.stop()
+    };
+    const delayer = new Delayer(
+      window.setTimeout,
+      mock,
+      1,
+      windowMock as Window
+    );
+    delayer.stop();
 
-    expect(windowMock.clearTimeout).toHaveBeenCalled()
+    expect(windowMock.clearTimeout).toHaveBeenCalled();
   });
 });

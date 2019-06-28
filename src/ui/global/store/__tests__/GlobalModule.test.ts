@@ -7,17 +7,17 @@ describe("GlobalModule", () => {
     expect.assertions(1);
     const module = new GlobalModule({});
 
-    await module.hideSpinner()
+    await module.hideSpinner();
 
-    expect(module.isLoading).toBeFalsy()
+    expect(module.isLoading).toBeFalsy();
   });
 
   it("should mutate state when dispatching loaded action", async () => {
     expect.assertions(1);
     const module = new GlobalModule({});
 
-    await module.showSpinner()
+    await module.showSpinner();
 
-    expect(module.isLoading).toBeTruthy()
+    expect(module.isLoading).toBeTruthy();
   });
 });

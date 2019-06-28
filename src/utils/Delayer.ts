@@ -23,8 +23,8 @@ export class Delayer {
   }
 
   public setCallback(callback: Function) {
-    this.callback = callback
-    return this
+    this.callback = callback;
+    return this;
   }
 
   public stop() {

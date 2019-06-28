@@ -2,6 +2,12 @@ import { SpinnerState } from "./SpinnerState";
 import { MutationTree } from "vuex";
 
 export class SpinnerMutations {
+  static names = {
+    enable: 'enable',
+    disable: 'disable'
+  }
+
+
   enable(state: SpinnerState) {
     state.isLoading = true;
   }

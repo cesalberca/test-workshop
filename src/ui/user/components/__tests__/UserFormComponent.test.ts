@@ -19,8 +19,8 @@ describe("UserFormComponent", () => {
   });
 
   it("should apply has-error class when it has error", () => {
-    wrapper.setProps({ hasError: true })
+    wrapper.setProps({ hasError: true });
 
-    expect(wrapper.find('input').classes()).toContain('has-error')
+    expect(wrapper.find("input").classes()).toContain("has-error");
   });
 });

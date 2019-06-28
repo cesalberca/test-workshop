@@ -13,6 +13,9 @@ import { Debouncer } from "../../../utils/Debouncer";
 import { AvatarQueryEmailService } from "../../../domains/avatar/services/AvatarQueryEmailService";
 import { Action } from "vuex-class";
 import { ShowSpinnerAction } from "../../global/store/ShowSpinnerAction";
+import { Store } from "../../store/Store";
+import { ActionType } from "../../../utils/ActionType";
+import { SpinnerActions } from "../../global/store/SpinnerActions";
 
 @Component({
   components: {
@@ -30,15 +33,20 @@ export default class UserViewerContainer extends Vue {
   @Inject()
   avatarQueryEmailService!: AvatarQueryEmailService;
 
-  @Action
-  enable!: ShowSpinnerAction;
+  @Store.SpinnerModule.Action
+  showSpinner!: ActionType<ShowSpinnerAction["showSpinner"]>;
+
+  @Store.SpinnerModule.Action
+  disableSpinner!: ActionType<ShowSpinnerAction["disableSpinner"]>;
 
   debouncedQueryEmail!: () => void;
 
   created() {
     this.debouncedQueryEmail = this.debouncer.debounce(async () => {
+      this.showSpinner();
       const user = await this.avatarQueryEmailService.queryEmail(this.email);
       this.user = user;
+      this.disableSpinner();
     }, 1000);
   }
 
