@@ -15,4 +15,8 @@ export class SpinnerMutations {
       enable: this.enable
     };
   }
+
+  public static create() {
+    return new SpinnerMutations();
+  }
 }

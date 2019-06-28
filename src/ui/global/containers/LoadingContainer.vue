@@ -7,6 +7,7 @@ import { Component, Vue } from "vue-property-decorator";
 import { Store } from "../../store/Store";
 import { GlobalModule } from "../store/GlobalModule";
 import { SpinnerComponent } from "../components";
+import { SpinnerState } from "../store/SpinnerState";
 
 @Component({
   components: {
@@ -14,7 +15,10 @@ import { SpinnerComponent } from "../components";
   }
 })
 export default class LoadingContainer extends Vue {
-  @Store.GlobalModule.State
-  isLoading!: GlobalModule["isLoading"];
+  /*@Store.GlobalModule.State
+  isLoading!: GlobalModule["isLoading"];*/
+
+  @Store.SpinnerModule.State
+  isLoading!: SpinnerState["isLoading"];
 }
 </script>

@@ -1,15 +1,23 @@
-import { ActionContext } from "vuex";
+import { ActionContext, ActionTree } from "vuex";
 import { Delayer } from "../../../utils/Delayer";
+import { SpinnerState } from "./SpinnerState";
+import { RootState } from "./RootState";
 
 export class ShowSpinnerAction {
   public constructor(private readonly delayer: Delayer) {}
 
-  public async showSpinner(
-    context: ActionContext<{ isLoading: boolean }, { isLoading: boolean }>
-  ): Promise<void> {
+  public showSpinner = async (
+    context: ActionContext<SpinnerState, RootState>
+  ): Promise<void> => {
     this.delayer
       .setCallback(() => context.commit("TOGGLE_SPINNER", true))
       .start();
+  };
+
+  public get(): ActionTree<SpinnerState, RootState> {
+    return {
+      showSpinner: this.showSpinner
+    };
   }
 
   public static create() {

@@ -8,6 +8,6 @@ Vue.config.productionTip = false;
 Vue.use(Vuex);
 
 new Vue({
-  store: Store.build(),
+  store: Store.create(),
   render: h => h(App)
 }).$mount("#app");
