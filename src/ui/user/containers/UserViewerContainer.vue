@@ -11,6 +11,8 @@ import { UserAvatarComponent } from "../components";
 import UserFormContainer from "./UserFormContainer.vue";
 import { Debouncer } from "../../../utils/Debouncer";
 import { AvatarQueryEmailService } from "../../../domains/avatar/services/AvatarQueryEmailService";
+import { Action } from "vuex-class";
+import { ShowSpinnerAction } from "../../global/store/ShowSpinnerAction";
 
 @Component({
   components: {
@@ -27,6 +29,9 @@ export default class UserViewerContainer extends Vue {
 
   @Inject()
   avatarQueryEmailService!: AvatarQueryEmailService;
+
+  @Action
+  enable!: ShowSpinnerAction;
 
   debouncedQueryEmail!: () => void;
 
