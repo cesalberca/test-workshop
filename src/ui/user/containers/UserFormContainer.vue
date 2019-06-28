@@ -30,7 +30,7 @@ export default class UserFormContainer extends Vue {
   }
 
   get isEmailValid(): boolean {
-    return this.userValidationService.validate(new User(this.email, ""));
+    return this.userValidationService.isValid(new User(this.email, ""));
   }
 }
 </script>

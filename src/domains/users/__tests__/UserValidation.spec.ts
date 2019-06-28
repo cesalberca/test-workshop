@@ -12,7 +12,7 @@ describe("UserValidationService", () => {
     const notValidEmail = "not valid email";
     const user = new User(notValidEmail, "");
 
-    const actual = userValidationService.validate(user);
+    const actual = userValidationService.isValid(user);
 
     expect(actual).toBe(false);
   });
@@ -21,7 +21,7 @@ describe("UserValidationService", () => {
     const notValidEmail = "user@";
     const user = new User(notValidEmail, "");
 
-    const actual = userValidationService.validate(user);
+    const actual = userValidationService.isValid(user);
 
     expect(actual).toBe(false);
   });
@@ -30,7 +30,7 @@ describe("UserValidationService", () => {
     const notValidEmail = "@domain.com";
     const user = new User(notValidEmail, "");
 
-    const actual = userValidationService.validate(user);
+    const actual = userValidationService.isValid(user);
 
     expect(actual).toBe(false);
   });
@@ -39,8 +39,8 @@ describe("UserValidationService", () => {
     const validEmail = "user@domain.com";
     const user = new User(validEmail, "");
 
-    const actual = userValidationService.validate(user);
+    const actual = userValidationService.isValid(user);
 
-    expect(actual).toBe(false);
+    expect(actual).toBe(true);
   });
 });
