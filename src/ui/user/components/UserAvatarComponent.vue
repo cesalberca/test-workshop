@@ -5,7 +5,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Prop, Component, Vue } from "vue-property-decorator";
+import { Prop, Component, Vue, Inject } from "vue-property-decorator";
 import { User } from "../../../domains/users/User";
 
 @Component
